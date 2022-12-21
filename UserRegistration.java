@@ -45,10 +45,34 @@ public class UserRegistration {
             validLastName();
         }
     }
-
+    static void validEmail(){
+        /*
+        UC3-> Valid Email E.g. abc.xyz@bl.co.in - Email has 3 mandatory parts (abc, bl & co)
+              and 2 optional (xyz & in) with precise @ and . positions.
+         */
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter E-mail");
+        String email = scanner.nextLine();
+        /*
+        pattern of e-mail string => abc.xyz@bl.co.in
+         */
+        String regex = "[a-z]{2,}.[a-z]{2,}[@][a-z]{1,}.[a-z]{1,}.[a-z]{1,}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        boolean result = matcher.matches();
+        if (result) {
+            System.out.println(email + "\nE-mail is Valid");
+        } else {
+            System.out.println(email + " Invalid E-mail ");
+            validFirstName();
+            validLastName();
+            validEmail();
+        }
+    }
     public static void main(String[] args) {
         System.out.println("Welcome To User Registration Program");
         validFirstName();
         validLastName();
+        validEmail();
     }
 }
