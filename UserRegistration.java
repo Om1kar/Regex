@@ -15,7 +15,7 @@ public class UserRegistration {
         /*
         first letter is Capital and other small letters =>minimum 3
          */
-        String regex = "[A-Z][a-z]{3,}";
+        String regex = "[A-Z][a-z]{3,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(firstName);
         boolean result = matcher.matches();
@@ -33,7 +33,7 @@ public class UserRegistration {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Last Name");
         String lastName = scanner.nextLine();
-        String regex = "[A-Z][a-z]{3,}";
+        String regex = "[A-Z][a-z]{3,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(lastName);
         boolean result = matcher.matches();
@@ -56,7 +56,7 @@ public class UserRegistration {
         /*
         pattern of e-mail string => abc.xyz@bl.co.in
          */
-        String regex = "[a-z]{2,}.[a-z]{2,}[@][a-z]{1,}.[a-z]{1,}.[a-z]{1,}";
+        String regex = "[a-z]{2,}.[a-z]{2,}[@][a-z]{1,}.[a-z]{1,}.[a-z]{1,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
         boolean result = matcher.matches();
@@ -69,10 +69,34 @@ public class UserRegistration {
             validEmail();
         }
     }
+    static void validContactNo(){
+        /*
+        UC4-> valid Mobile Format - E.g. 91 9919819801 - Country
+              code follow by space and 10 digit number
+         */
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Contact No-");
+        String contactNo = scanner.nextLine();
+        String regex = "[0-9]{2} [0-9]{10}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(contactNo);
+        boolean result = matcher.matches();
+        if (result) {
+            System.out.println(contactNo + "\n Contact No.is Valid");
+        } else {
+            System.out.println(contactNo + "\nInvalid Contact No.");
+            validFirstName();
+            validLastName();
+            validEmail();
+            validContactNo();
+        }
+
+    }
     public static void main(String[] args) {
         System.out.println("Welcome To User Registration Program");
         validFirstName();
         validLastName();
         validEmail();
+        validContactNo();
     }
 }
