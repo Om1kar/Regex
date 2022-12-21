@@ -15,7 +15,7 @@ public class UserRegistration {
         /*
         first letter is Capital and other small letters =>minimum 3
          */
-        String regex = "[A-Z][a-z]{3,}$";
+        String regex = "[A-Z]+[a-z]{3}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(firstName);
         boolean result = matcher.matches();
@@ -33,7 +33,7 @@ public class UserRegistration {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Last Name");
         String lastName = scanner.nextLine();
-        String regex = "[A-Z][a-z]{3,}$";
+        String regex = "[A-Z]+[a-z]{3}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(lastName);
         boolean result = matcher.matches();
@@ -56,7 +56,7 @@ public class UserRegistration {
         /*
         pattern of e-mail string => abc.xyz@bl.co.in
          */
-        String regex = "[a-z]{2,}.[a-z]{2,}[@][a-z]{1,}.[a-z]{1,}.[a-z]{1,}$";
+        String regex = "[a-z]{3}.[a-z]{3}@[a-z]{2}.[a-z]{2}.[a-z]{2}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
         boolean result = matcher.matches();
@@ -101,7 +101,7 @@ public class UserRegistration {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Password");
         String password1 = scanner.nextLine();
-        String regex = "[A-Z]{1}[0-9]{1}[@#%&*!$^]{1}[a-z]{6}$";
+        String regex = "[A-Z]+[0-9]+[@#%&*!$^]{1}+[a-z]{5}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(password1);
         boolean result = matcher.matches();
