@@ -95,11 +95,12 @@ public class UserRegistration {
         /*
         UC5-> password Rule1– minimum 8 Characters
         UC6-> at least 1 upper case
+        UC7-> at least one numeric number
          */
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Password");
         String password1 = scanner.nextLine();
-        String regex = "[A-Z]{1}[a-z]{7}$";
+        String regex = "[A-Z]{1}[0-9]{1}[a-z]{6}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(password1);
         boolean result = matcher.matches();
