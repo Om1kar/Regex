@@ -91,14 +91,15 @@ public class UserRegistration {
             validContactNo();
         }
     }
-    static void validPasswordRule1(){
+    static void validPasswordRule(){
         /*
         UC5-> password Rule1– minimum 8 Characters
+        UC6-> at least 1 upper case
          */
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Password");
         String password1 = scanner.nextLine();
-        String regex = "[a-z]{8}$";
+        String regex = "[A-Z]{1}[a-z]{7}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(password1);
         boolean result = matcher.matches();
@@ -110,7 +111,7 @@ public class UserRegistration {
             validLastName();
             validEmail();
             validContactNo();
-            validPasswordRule1();
+            validPasswordRule();
         }
     }
     public static void main(String[] args) {
@@ -119,6 +120,6 @@ public class UserRegistration {
         validLastName();
         validEmail();
         validContactNo();
-        validPasswordRule1();
+        validPasswordRule();
     }
 }
