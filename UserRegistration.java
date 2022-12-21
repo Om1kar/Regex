@@ -72,7 +72,7 @@ public class UserRegistration {
     static void validContactNo(){
         /*
         UC4-> valid Mobile Format - E.g. 91 9919819801 - Country
-              code follow by space and 10 digit number
+              code follow by space and 10-digit number
          */
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Contact No-");
@@ -82,7 +82,7 @@ public class UserRegistration {
         Matcher matcher = pattern.matcher(contactNo);
         boolean result = matcher.matches();
         if (result) {
-            System.out.println(contactNo + "\n Contact No.is Valid");
+            System.out.println(contactNo + "\nContact No.is Valid");
         } else {
             System.out.println(contactNo + "\nInvalid Contact No.");
             validFirstName();
@@ -90,7 +90,28 @@ public class UserRegistration {
             validEmail();
             validContactNo();
         }
-
+    }
+    static void validPasswordRule1(){
+        /*
+        UC5-> password Rule1– minimum 8 Characters
+         */
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Password");
+        String password1 = scanner.nextLine();
+        String regex = "[a-z]{8}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password1);
+        boolean result = matcher.matches();
+        if (result) {
+            System.out.println(password1 + "\nPassword is Valid");
+        } else {
+            System.out.println(password1 + "\nInvalid Password");
+            validFirstName();
+            validLastName();
+            validEmail();
+            validContactNo();
+            validPasswordRule1();
+        }
     }
     public static void main(String[] args) {
         System.out.println("Welcome To User Registration Program");
@@ -98,5 +119,6 @@ public class UserRegistration {
         validLastName();
         validEmail();
         validContactNo();
+        validPasswordRule1();
     }
 }
